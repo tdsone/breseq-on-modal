@@ -1,7 +1,9 @@
 from pathlib import Path
-from modal import App, Image
+from modal import App, Image, Volume
 
 app = App("breseq-on-modal")
+
+vol = Volume.from_name("breseq-results", create_if_missing=True)
 
 image = (
     Image.debian_slim()
