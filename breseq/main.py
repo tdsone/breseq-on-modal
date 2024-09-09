@@ -19,7 +19,9 @@ image = (
 CPUs = 32
 
 
-@app.function(image=image, cpu=CPUs, timeout=60 * 60)
+@app.function(
+    image=image, cpu=CPUs, timeout=60 * 60, volumes={"/root/breseq-results": vol}
+)
 def run_breseq(
     reference: Path,
     fastq1: Path,
@@ -31,6 +33,11 @@ def run_breseq(
     cmd = f"/breseq-0.39.0-Linux-x86_64/bin/breseq -j {CPUs} -r '/root/breseq/{reference}' '/root/breseq/{fastq1}' '/root/breseq/{fastq2}'"
 
     subprocess.run(cmd, shell=True)
+
+    # Copy results to volume
+    subprocess.run(
+        f"cp -r /breseq-0.39.0-Linux-x86_64/output/* /root/breseq-results", shell=True
+    )
 
 
 @app.local_entrypoint()
