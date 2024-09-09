@@ -14,10 +14,10 @@ image = (
     )
 )
 
-CPUs = 16
+CPUs = 32
 
 
-@app.function(image=image, cpu=CPUs)
+@app.function(image=image, cpu=CPUs, timeout=60 * 60)
 def run_breseq(
     reference: Path,
     fastq1: Path,
