@@ -1,0 +1,5 @@
+{
+  "reference": "E. coli_W3110_genome_and_annotations.gbk",
+  "fastq1": "NG-33079_ANT_5_lib688184_10218_3_1.fastq.gz",
+  "fastq2": "NG-33079_ANT_5_lib688184_10218_3_2.fastq.gz"
+}
