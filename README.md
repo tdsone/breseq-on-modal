@@ -42,14 +42,13 @@ it means that you should run this code in the terminal. Make sure that it's a un
     │   └── requirements.txt
     └── image.png
     ```
-3 directories, 11 files
 6. Open `config.json` in VS Code or any other text editor which is located in the `breseq` folder to correctly name the fastq and reference sequence.
 ### 3. Running breseq and retrieving results
 6. Open a terminal and make sure you are in the root folder of this repository. To check if you are in the right folder, run `pwd`. This should show `<blablabla>/breseq-on-modal` but e.g. not `<blablabla>/breseq-on-modal/breseq`.
 7. Now, in your terminal, run `modal run --detach breseq.main` to run breseq. This will take a while (up to an hour). It will first set everything up (only once), then upload the files (every time you run modal), then run breseq. After the files have been uploaded, it should be fine to close your terminal and go home - breseq runs in the cloud ;)
 8. You can always check the status of the run in the ephemeral apps tab: 
     ![alt text](image.png)
-9.  Once it's done, you have to download the files. Type this in your terminal `modal volume get breseq-results <your folder>`. This will also be among the last few messages in the logs and is the time at which you started the breseq run. If in doubt you can see all your runs in the storage tab of modal: https://modal.com/storage/<username>/main/breseq-results.
+9.  Once it's done, you have to download the files. Type this in your terminal `modal volume get breseq-results <your folder>`. This will also be among the last few messages in the logs and is the time at which you started the breseq run. If in doubt you can see all your runs in the storage tab of modal: `https://modal.com/storage/<your username>/main/breseq-results`.
     ![alt text](image-1.png)
 
 # How much does it cost? 
