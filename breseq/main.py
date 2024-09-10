@@ -16,7 +16,7 @@ image = (
     )
 )
 
-CPUs = 64
+CPUs = 32 # breseq only needs many CPUs for part of the run but all reserved CPUs (also idle ones) are billed. Increasing the number of reserved CPU will make the run more expensive but only marginally quicker.
 
 
 @app.function(
