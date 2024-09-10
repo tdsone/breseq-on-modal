@@ -16,29 +16,35 @@ image = (
     )
 )
 
-CPUs = 32
+CPUs = 64
 
 
 @app.function(
-    image=image, cpu=CPUs, timeout=60 * 60, volumes={"/root/breseq-results": vol}
+    image=image, cpu=CPUs, timeout=60 * 60 * 3, volumes={"/root/breseq-results": vol} # Timeout is in seconds
 )
 def run_breseq(
     reference: Path,
     fastq1: Path,
     fastq2: Path,
 ):
+    from datetime import datetime
+    import os
+
+    # Create a new folder in the volume to store the results (should be datetime e.g. 2024-09-10-13:12:00)
+    timestamp = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+    results_dir = f"/root/breseq-results/{timestamp}"
+    os.makedirs(results_dir)
+    
+    vol.commit()
+    
     # Run breseq
     import subprocess
 
-    cmd = f"/breseq-0.39.0-Linux-x86_64/bin/breseq -j {CPUs} -r '/root/breseq/{reference}' '/root/breseq/{fastq1}' '/root/breseq/{fastq2}'"
+    cmd = f"/breseq-0.39.0-Linux-x86_64/bin/breseq -j {CPUs} -r '/root/breseq/{reference}' '/root/breseq/{fastq1}' '/root/breseq/{fastq2}' -o {results_dir}"
 
     subprocess.run(cmd, shell=True)
 
-    # Copy results to volume
-    subprocess.run(
-        f"cp -r /breseq-0.39.0-Linux-x86_64/output/* /root/breseq-results", shell=True
-    )
-
+    print(f"breseq run finished. Your results can now be retrieved by running:\nmodal volume get breseq-results {timestamp}")
 
 @app.local_entrypoint()
 def main():

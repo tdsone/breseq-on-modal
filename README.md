@@ -1,4 +1,4 @@
-# Cloud-based breseq
+# ☁️ Cloud-based breseq
 Runs breseq in the cloud, no fast computer necessary.
 
 *Hint:* Whenver text is written like `this`, or
@@ -49,7 +49,8 @@ it means that you should run this code in the terminal. Make sure that it's a un
 7. Now, in your terminal, run `modal run --detach breseq.main` to run breseq. This will take a while (up to an hour). It will first set everything up (only once), then upload the files (every time you run modal), then run breseq. After the files have been uploaded, it should be fine to close your terminal and go home - breseq runs in the cloud ;)
 8. You can always check the status of the run in the ephemeral apps tab: 
     ![alt text](image.png)
-9.  Once it's done, you have to download the files. Type this in your terminal `modal volume get breseq-results`
+9.  Once it's done, you have to download the files. Type this in your terminal `modal volume get breseq-results <your folder>`. This will also be among the last few messages in the logs and is the time at which you started the breseq run. If in doubt you can see all your runs in the storage tab of modal: https://modal.com/storage/<username>/main/breseq-results.
+    ![alt text](image-1.png)
 
 # How much does it cost? 
 As of 10.09.2024, modal comes with 30$ for free per user per month. One full breseq run costs ~3-5$, so you can run breseq 6-10 times per month per user. You can also apply for academic credits which is 500$ once. 
