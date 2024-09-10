@@ -25,8 +25,25 @@ it means that you should run this code in the terminal. Make sure that it's a un
     If you are on windows, make sure this is a WSL terminal and not PowerShell.
 ### 2. Repository and file setup
 3. Clone this repository to your computer (i.e copy the files from here to your local computer). To do so, type this into your terminal: `git clone https://github.com/tdsone/breseq-on-modal.git`
-4. Place your fastq and reference files (can be zipped or unzipped) into the `breseq` folder. Do not include any other files as all files in the `breseq` folder will be uploaded - more files increase the upload time. On windows, the `breseq-on-modal` folder which you downloaded in Step 3 will most likely be located in a location like `C/Users/<your username>/breseq-on-modal`.
-5. Open `config.json` in VS Code or any other text editor which is located in the `breseq` folder to correctly name the fastq and reference sequence.
+4. Place your fastq and reference files (zipped else the upload will take longer) into the `breseq` folder. Do not include any other files as all files in the `breseq` folder will be uploaded - more files increase the upload time. On windows, the `breseq-on-modal` folder which you downloaded in Step 3 will most likely be located in a location like `C/Users/<your username>/breseq-on-modal`. Your folder structure should look like this after placing the files:
+    ```
+    .
+    ├── README.md
+    ├── breseq
+    │   ├── E. coli_W3110_genome_and_annotations.gbk
+    │   ├── NG-33079_ANT_5_lib688184_10218_3_1.fastq.gz
+    │   ├── NG-33079_ANT_5_lib688184_10218_3_2.fastq.gz
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   │   ├── __init__.cpython-310.pyc
+    │   │   └── main.cpython-310.pyc
+    │   ├── config.json
+    │   ├── main.py
+    │   └── requirements.txt
+    └── image.png
+    ```
+3 directories, 11 files
+6. Open `config.json` in VS Code or any other text editor which is located in the `breseq` folder to correctly name the fastq and reference sequence.
 ### 3. Running breseq and retrieving results
 6. Open a terminal and make sure you are in the root folder of this repository. To check if you are in the right folder, run `pwd`. This should show `<blablabla>/breseq-on-modal` but e.g. not `<blablabla>/breseq-on-modal/breseq`.
 7. Now, in your terminal, run `modal run --detach breseq.main` to run breseq. This will take a while (up to an hour). It will first set everything up (only once), then upload the files (every time you run modal), then run breseq. After the files have been uploaded, it should be fine to close your terminal and go home - breseq runs in the cloud ;)
