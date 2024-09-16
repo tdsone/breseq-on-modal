@@ -51,6 +51,12 @@ it means that you should run this code in the terminal. Make sure that it's a un
 9.  Once it's done, you have to download the files. Type this in your terminal `modal volume get breseq-results <your folder>`. This will also be among the last few messages in the logs and is the time at which you started the breseq run. If in doubt you can see all your runs in the storage tab of modal: `https://modal.com/storage/<your username>/main/breseq-results`.
     ![alt text](image-1.png)
 
+# Common Issues & Troubleshooting
+## File names in folder and config.json don't match
+If you change the files in the breseq folder you have to also change the config.json. Here's an example of the error you get when file names don't match the names specified in config.json:
+![image](https://github.com/user-attachments/assets/ec53d2d3-853e-4883-b058-d2a1b53c0768)
+
+
 # How much does it cost? 
 As of 10.09.2024, modal comes with 30$ for free per user per month. One full breseq run costs ~3-5$, so you can run breseq 6-10 times per month per user. You can also apply for academic credits which is 500$ once. 
 
