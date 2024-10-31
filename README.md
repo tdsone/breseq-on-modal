@@ -17,7 +17,7 @@ it means that you should run this code in the terminal. Make sure that it's a un
 
 ### 1. Log in to modal
 1. Sign up to [modal.com](https://modal.com/signup)
-2. Follow the modal quickstart guide by entering the following the code in a new terminal: 
+2. Follow the modal quickstart guide by entering the following code in a new terminal: 
     ```
     pip install modal
     python3 -m modal setup
